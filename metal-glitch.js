@@ -133,7 +133,7 @@ $(document).ready(function() {
 	function initialLoader() {
 		$('body').removeClass('noscroll');
 
-		var loadText = 'Welcome: to the website SHADEEX.XYZ';
+		var loadText = 'Welcome: to the website metal.github.io';
 		var loaderDone = false;
 		$.each(loadText.split(''), function(i, letter){
 			setTimeout(function(){
