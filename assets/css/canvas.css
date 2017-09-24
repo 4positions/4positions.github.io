@@ -1,0 +1,67 @@
+<canvas id="c" width="100%" height="100%"></canvas> 
+ 
+<script> 
+document.body.clientWidth; // webkit fix: http://qfox.nl/weblog/218 
+// start of submission // 
+a = Math, b = a.random, c = [], j = document.getElementById("c"), k = j.getContext("2d"), m = window, n = (W = m.innerWidth) / 2, q = (H = m.innerHeight) / 2, r = M = 1; 
+function s(o, p, u, v) { 
+k.fillStyle = o; 
+k.beginPath(); 
+k.arc(p, u, v, 0, a.PI * 2, 0); 
+k.closePath(); 
+k.fill() 
+} 
+function t(o, p) { 
+for (g = 40; g--;) if (!c[g]) { 
+c[g] = { 
+x: o || n, 
+y: p || q, 
+d: o ? b() * 4 - 2 : 0, 
+e: p ? b() * 4 - 2 : 0, 
+b: 1, 
+a: 0, 
+c: b() > .5 
+}; 
+return 
+} 
+} 
+with(j.style) { 
+position = "fixed"; 
+top = left = 0 
+} 
+j.width = W; 
+j.height = H; 
+for (f = 40; f--;) c[f] = 0; 
+for (f = 9; f--;) t(); 
+m.setInterval(function () { 
+k.fillStyle = "rgba(9,9,9,.2)"; 
+k.fillRect(0, 0, W, H); 
+for (f = 40; f--;) if (d = c[f]) if (d.a > 1E3) c[f] = 0; 
+else { 
+l = d.a / 1E3; 
+h = l * 7; 
+d.d += b() * .1 * (n - d.x > 1 ? 1 : n - d.x < -1 ? -1 : n - d.x); 
+d.e += b() * .1 * (q - d.y > 1 ? 1 : q - d.y < -1 ? -1 : q - d.y); 
+d.x += d.d; 
+d.y += d.e; 
+d.a++; 
+i = d.c ? "rgba(49,153,255," : "rgba(255,49,166,"; 
+h = 1 - l; 
+s(i + h + ")", d.x, d.y, 1 + l * 12); 
+s(i + h / 2 + ")", d.x, d.y, 1 + l * 16); 
+d.b && d.b--; 
+if (d.b == 0 && d.a > 250 && d.a < 750 && b() > .9) for (g = 40; g-- && !d.b;) if ((e = c[g]) && e != d && e.a >= d.a) { 
+i = a.sqrt(d.x - e.x, d.y - e.y); 
+if (i > -5 && i < 5 && d.c != e.c) { 
+t(d.x, d.y); 
+d.b = e.b = 10 
+} 
+} 
+} 
+r = n > W || n < 0 ? -r : r; 
+M = q > H || q < 0 ? -M : M; 
+n += r; 
+q += M 
+}, 40); 
+// end of submission // 
+</script>
